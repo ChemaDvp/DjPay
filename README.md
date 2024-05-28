@@ -2,6 +2,10 @@
 
 # **DJ PAY**
 
+<p align="center" style="font-size: 36px; font-weight: bold;">
+  Título Centrado
+</p>
+
 ## Proyecto final de Grado DAM
 
 #### Realizado por: José Manuel Martínez Palacios 
