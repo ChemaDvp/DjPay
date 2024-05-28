@@ -7,10 +7,10 @@
 
 ### **ÍNDICE**
 - [Introducción](https://github.com/ChemaDvp/Api_DjPay/wiki/Introducción)
-- [Descripción](https://github.com/ChemaDvp/Api_DjPay/wiki/Descripción)
-- [Justificación](https://github.com/ChemaDvp/Api_DjPay/wiki/Justificación)
-- [Objetivos](https://github.com/ChemaDvp/Api_DjPay/wiki/Objetivos)
 - [Motivación](https://github.com/ChemaDvp/Api_DjPay/wiki/Motivación)
+- [Descripción](https://github.com/ChemaDvp/Api_DjPay/wiki/Descripción)
+- [Objetivos](https://github.com/ChemaDvp/Api_DjPay/wiki/Objetivos)
+- [Justificación](https://github.com/ChemaDvp/Api_DjPay/wiki/Justificación)
 - [Funcionalidades](https://github.com/ChemaDvp/Api_DjPay/wiki/Funcionalidades)
 - [Guía Instalación](https://github.com/ChemaDvp/Api_DjPay/wiki/GuíaInstalación)
 - [Guía Uso](https://github.com/ChemaDvp/Api_DjPay/wiki/GuíaUso)
