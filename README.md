@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  <h1 style="font-size: 20px;">Bienvenido al repositorio que almacena la Aplicación</h1>
+  <h2 style="font-size: 20px;">Bienvenido al repositorio que almacena la Aplicación</h2>
 </div>
 
 <div align="center">
