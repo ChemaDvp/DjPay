@@ -1,7 +1,6 @@
 <div align="center">
   <h1 style="font-size: 56px;">DJ PAY</h1>
 </div>
----
 
 <div align="center">
   <h1 style="font-size: 36px;">Bienvenido al repositorio que almacena la APP</h1>
