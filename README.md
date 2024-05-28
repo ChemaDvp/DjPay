@@ -1,6 +1,8 @@
 **Bienvenido** al repositorio que almacena la APP [**DJ PAY**](https://github.com/ChemaDvp/Api_DjPay/wiki)!
 
-<h1 style="text-align: center;">DJ PAY</h1>
+|                             Título Centrado                              |
+|:------------------------------------------------------------------------:|
+
 
 ## Proyecto final de Grado DAM
 ### Realizado por: José Manuel Martínez Palacios 
