@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/inicio">
+
+    <fragment
+        android:id="@+id/inicio"
+        android:name="com.vedruna.djpay.inicio"
+        android:label="fragment_inicio"
+        tools:layout="@layout/fragment_inicio" >
+        <action
+            android:id="@+id/action_inicio_to_enviar"
+            app:destination="@id/enviar" />
+        <action
+            android:id="@+id/action_inicio_to_peticiones"
+            app:destination="@id/peticiones" />
+        <action
+            android:id="@+id/action_inicio_to_perfil"
+            app:destination="@id/perfil" />
+    </fragment>
+    <fragment
+        android:id="@+id/enviar"
+        android:name="com.vedruna.djpay.Enviar"
+        android:label="fragment_enviar"
+        tools:layout="@layout/fragment_enviar" />
+    <fragment
+        android:id="@+id/peticiones"
+        android:name="com.vedruna.djpay.peticiones"
+        android:label="fragment_peticiones"
+        tools:layout="@layout/fragment_peticiones" />
+    <fragment
+        android:id="@+id/perfil"
+        android:name="com.vedruna.djpay.perfil"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
+</navigation>
