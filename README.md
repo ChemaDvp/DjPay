@@ -21,4 +21,4 @@
 - [Contacto](https://github.com/ChemaDvp/Api_DjPay/wiki/Contacto)
 
 #### Acerca del proyecto
-Aplicación Android creada en Android Studio y un API (Backend) en Java.
+Aplicación Android creada en Android Studio y una API (Backend) en Java.
