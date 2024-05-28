@@ -2,8 +2,8 @@
 
 # **DJ PAY**
 
-<p align="center" style="font-size: 36px; font-weight: bold;">
-  Título Centrado
+<p align="center" style="font-size: 56px; font-weight: bold;">
+  DJ PAY
 </p>
 
 ## Proyecto final de Grado DAM
