@@ -2,7 +2,7 @@
 
 # **DJ PAY**
 
-<p align="center" style="font-size: 56px; font-weight: bold;">
+<p align="center" style="font-size: 56px;">
   DJ PAY
 </p>
 
