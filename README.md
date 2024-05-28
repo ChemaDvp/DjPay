@@ -2,8 +2,7 @@
 
 <h1 style="text-align: center;">DJ PAY</h1>
 
-## (Proyecto final de Grado DAM)
-
+## Proyecto final de Grado DAM
 ### Realizado por: José Manuel Martínez Palacios 
 
 ## Aplicación Android.
