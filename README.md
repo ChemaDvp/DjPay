@@ -11,10 +11,6 @@
   <h3 style="font-size: 10px;">Realizado por: José Manuel Martínez Palacios</h3>
 </div>
 
-## Proyecto final de Grado DAM
-
-#### Realizado por: José Manuel Martínez Palacios 
-
 ## Aplicación Android.
 
 ### **ÍNDICE**
