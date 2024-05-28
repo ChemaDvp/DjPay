@@ -4,7 +4,7 @@
 ---
 
 <div align="center">
-  <h1 style="font-size: 36px;">Bienvenido al repositorio que almacena la APP [DJ PAY]</h1>
+  <h1 style="font-size: 36px;">Bienvenido al repositorio que almacena la APP [DJ PAY](https://github.com/ChemaDvp/Api_DjPay/wiki)!</h1>
 </div>
 
 **Bienvenido** al repositorio que almacena la APP [**DJ PAY**](https://github.com/ChemaDvp/Api_DjPay/wiki)!
