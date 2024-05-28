@@ -1,7 +1,7 @@
 **Bienvenido** al repositorio que almacena la APP [**DJ PAY**](https://github.com/ChemaDvp/Api_DjPay/wiki)!
 
 <p align="center">
-  <img src="https://via.placeholder.com/1" alt="DJ PAY" />
+  <h1>"DJ PAY"<h1>
 </p>
 
 
