@@ -3,8 +3,8 @@
 # **DJ PAY**
 
 ---
-## Proyecto final de Grado DAM
-### Realizado por: José Manuel Martínez Palacios 
+##Proyecto final de Grado DAM
+###Realizado por: José Manuel Martínez Palacios 
 ---
 
 ## Aplicación Android.
