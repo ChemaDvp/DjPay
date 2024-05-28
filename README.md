@@ -15,7 +15,7 @@
 - [Objetivos](https://github.com/ChemaDvp/DjPay/wiki/Objetivos)
 - [Justificación](https://github.com/ChemaDvp/DjPay/wiki/Justificación)
 - [Funcionalidades](https://github.com/ChemaDvp/DjPay/wiki/Funcionalidades)
-- [Guía Instalación](https://github.com/ChemaDvp/DjPay/wiki/GuíaInstalación)
+- [Guía Instalación](https://github.com/ChemaDvp/DjPay/wiki/Guía-Instalación)
 - [Guía Uso](https://github.com/ChemaDvp/DjPay/wiki/Guía-Uso)
 - [Figma](https://github.com/ChemaDvp/DjPay/wiki/Figma)
 - [Conclusión](https://github.com/ChemaDvp/DjPay/wiki/Conclusión)
