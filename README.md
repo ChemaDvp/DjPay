@@ -7,8 +7,8 @@
 </div>
 
 <div align="center">
-  <h1 style="font-size: 20px;">Proyecto final de Grado DAM</h1>
-  <h1 style="font-size: 10px;">Realizado por: José Manuel Martínez Palacios</h1>
+  <h2 style="font-size: 20px;">Proyecto final de Grado DAM</h2>
+  <h3 style="font-size: 10px;">Realizado por: José Manuel Martínez Palacios</h3>
 </div>
 
 ## Proyecto final de Grado DAM
