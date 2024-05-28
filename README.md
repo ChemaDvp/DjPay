@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  <h1 style="font-size: 36px;">Bienvenido al repositorio que almacena la APP</h1>
+  <h1 style="font-size: 20px;">Bienvenido al repositorio que almacena la APP Dj Pay</h1>
 </div>
 
 ## Proyecto final de Grado DAM
