@@ -3,12 +3,12 @@
 </div>
 
 <div align="center">
-  <h1 style="font-size: 20px;">Bienvenido al repositorio que almacena la APP Dj Pay</h1>
+  <h1 style="font-size: 20px;">Bienvenido al repositorio que almacena la Aplicación</h1>
 </div>
 
 <div align="center">
-  <h2 style="font-size: 20px;">Proyecto final de Grado DAM</h2>
-  <h3 style="font-size: 10px;">Realizado por: José Manuel Martínez Palacios</h3>
+  <h3 style="font-size: 20px;">Proyecto final de Grado DAM</h3>
+  <h4 style="font-size: 10px;">Realizado por: José Manuel Martínez Palacios</h4>
 </div>
 
 ## Aplicación Android.
