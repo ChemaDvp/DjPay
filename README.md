@@ -1,8 +1,8 @@
-**Bienvenido** al repositorio que almacena la APP [**DJ PAY**](https://github.com/ChemaDvp/Api_DjPay/wiki)!
-
 <div align="center">
   <h1 style="font-size: 56px;">DJ PAY</h1>
 </div>
+---
+**Bienvenido** al repositorio que almacena la APP [**DJ PAY**](https://github.com/ChemaDvp/Api_DjPay/wiki)!
 
 ## Proyecto final de Grado DAM
 
