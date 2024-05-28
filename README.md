@@ -1,6 +1,6 @@
 **Bienvenido** al repositorio que almacena la APP [**DJ PAY**](https://github.com/ChemaDvp/Api_DjPay/wiki)!
 
-|                             Título Centrado                              |
+|                             **DJ PAY**                              |
 |:------------------------------------------------------------------------:|
 
 
