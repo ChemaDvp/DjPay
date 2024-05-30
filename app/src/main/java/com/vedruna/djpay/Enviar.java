@@ -39,17 +39,17 @@ public class Enviar extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_enviar, container, false);
         listView = rootView.findViewById(R.id.listaDJS);
 
+        djList = new ArrayList<>();
+        userAdapter = new UserAdapter(getActivity(), djList);
+        listView.setAdapter(userAdapter);
+        mostrarTodosDjs();
+
         // Aquí debes tener una lista de datos que quieras mostrar en el ListView
         //String[] datos = obtenerTodosDjs();
         // Crear un adaptador para el ListView
         //ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, datos);
         // Establecer el adaptador en el ListView
         //listView.setAdapter(adapter);
-
-        djList = new ArrayList<>();
-        userAdapter = new UserAdapter(getActivity(), djList);
-        listView.setAdapter(userAdapter);
-        mostrarTodosDjs();
 
         return rootView;
     }
@@ -64,15 +64,8 @@ public class Enviar extends Fragment {
         return new String[]{"Dato 1", "Dato 2", "Dato 3", "Dato 4", "Dato 5", "Dato 6", "Dato 7"
                 , "Dato 8", "Dato 9", "Dato 10"};
     }
-
      */
-
     private void mostrarTodosDjs() {
-        // Aquí realizas la llamada a tu API para obtener los DJs
-        // Puedes usar Retrofit, Volley u otra biblioteca para hacer la solicitud HTTP
-        // y recibir la lista de DJs desde tu API
-
-        // Por ejemplo, usando Retrofit:
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())

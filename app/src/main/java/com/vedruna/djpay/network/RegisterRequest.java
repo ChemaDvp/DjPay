@@ -11,10 +11,10 @@ public class RegisterRequest implements Serializable{
 
     public RegisterRequest() {}
 
-    public RegisterRequest(String username, String password, String email, String rol) {
+    public RegisterRequest(String username, String email, String password, String rol) {
         this.username = username;
-        this.password = password;
         this.email = email;
+        this.password = password;
         this.rol = rol;
     }
 
@@ -36,14 +36,14 @@ public class RegisterRequest implements Serializable{
         this.password = password;
     }
 
-    public  String getEmail(String email){
+    public String getEmail(){
         return email;
     }
     public void setEmail(String email){
         this.email = email;
     }
 
-    public  String getRol(String rol){
+    public  String getRol(){
         return rol;
     }
     public void setRol(String rol){

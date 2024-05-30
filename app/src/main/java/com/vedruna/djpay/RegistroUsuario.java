@@ -32,6 +32,7 @@ public class RegistroUsuario extends AppCompatActivity {
     private Button registrarse;
     Button volver;
 
+    /*
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,24 @@ public class RegistroUsuario extends AppCompatActivity {
 
         initView();
     }
+     */
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_registro_usuario);
+        volver = findViewById(R.id.btnvolverRegistro);
+
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToLogin();
+            }
+        });
+
+        initView();
+    }
+    /*
     private void initView() {
         username = findViewById(R.id.usertxt);
         email = findViewById(R.id.emailtxt);
@@ -81,6 +99,42 @@ public class RegistroUsuario extends AppCompatActivity {
         });
     }
 
+     */
+
+    private void initView() {
+        username = findViewById(R.id.userRegistertxt);
+        email = findViewById(R.id.emailtxt);
+        password = findViewById(R.id.passRegistertxt);
+        usuarioCheck = findViewById(R.id.usuarioCheck);
+        djCheck = findViewById(R.id.djCheck);
+        registrarse = findViewById(R.id.registrarse);
+
+        registrarse.setOnClickListener(v -> {
+            String usernameRellenado = username.getText().toString().trim();
+            String emailRellenado = email.getText().toString().trim();
+            String passwordRellenada = password.getText().toString().trim();
+
+            if (usernameRellenado.isEmpty() || emailRellenado.isEmpty() || passwordRellenada.isEmpty()) {
+                Toast.makeText(RegistroUsuario.this, "No puede haber campos vacíos", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (!usuarioCheck.isChecked() && !djCheck.isChecked()) {
+                Toast.makeText(RegistroUsuario.this, "Debe seleccionar un rol", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (usuarioCheck.isChecked() && djCheck.isChecked()) {
+                Toast.makeText(RegistroUsuario.this, "No pueden estar los dos checks activados", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String rol = usuarioCheck.isChecked() ? "Usuario" : "Dj";
+            registerUser(usernameRellenado, emailRellenado, passwordRellenada, rol);
+        });
+    }
+
+    /*
     private void registerUser(String username, String email, String password, String rol){
         ApiService apiService = RetrofitClient.getApiService(this);
         RegisterRequest registerRequest = new RegisterRequest(username, email , password, rol);
@@ -105,5 +159,33 @@ public class RegistroUsuario extends AppCompatActivity {
                 Toast.makeText(RegistroUsuario.this, "Ha ocurrido un problema: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+     */
+    private void registerUser(String username, String email, String password, String rol) {
+        ApiService apiService = RetrofitClient.getApiService(this);
+        RegisterRequest registerRequest = new RegisterRequest(username, email, password, rol);
+
+        apiService.registerUser(registerRequest).enqueue(new Callback<AuthResponse>() {
+            @Override
+            public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    String token = response.body().getToken();
+                    TokenManager.getInstance(RegistroUsuario.this).saveToken(token);
+                    Toast.makeText(RegistroUsuario.this, "Registro completado", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(RegistroUsuario.this, "Registro fallido", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AuthResponse> call, Throwable t) {
+                Toast.makeText(RegistroUsuario.this, "Ha ocurrido un problema: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void goToLogin() {
+        Intent intent = new Intent(RegistroUsuario.this, Login.class);
+        startActivity(intent);
     }
 }
