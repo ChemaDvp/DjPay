@@ -29,7 +29,7 @@
 - [Contacto](https://github.com/ChemaDvp/DjPay/wiki/Contacto)
 
 
-### Documentación extra [Haz clic aquí](https://www.notion.so/Documentaci-n-Secundaria-Dj-Pay-90492ccef34e4af7a4b5330794aa65d2?pvs=4)
+### Documentación extra (Diagramas) [Haz clic aquí](https://www.notion.so/Documentaci-n-Secundaria-Dj-Pay-90492ccef34e4af7a4b5330794aa65d2?pvs=4)
 
 
 #### Acerca del proyecto
