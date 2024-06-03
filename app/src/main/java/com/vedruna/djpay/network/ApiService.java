@@ -22,5 +22,4 @@ public interface ApiService {
 
     @GET("api/v1/usuario/users/dj")
     Call<List<User>> getUsersWithDjRole();
-
 }

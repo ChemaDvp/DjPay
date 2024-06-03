@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,30 +32,9 @@ public class Login extends AppCompatActivity {
     Button registroUsuario;
     Button inicioSesion;
     private ApiService apiService;
+    private TokenManager tokenManager;
 
-/*
-    @SuppressLint("MissingInflatedId")
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
-        registroUsuario = findViewById(R.id.btnRegistro);
-        inicioSesion = findViewById(R.id.btnInicio);
 
-        inicioSesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Login.this, FrameLayaout.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        apiService = RetrofitClient.getApiService(this);
-        initView();
-    }
-
- */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,40 +42,13 @@ public class Login extends AppCompatActivity {
 
         registroUsuario = findViewById(R.id.btnRegistro);
         apiService = RetrofitClient.getApiService(this);
+        tokenManager = TokenManager.getInstance(this);
 
         // Agregar el mensaje de log
         Log.d("MainActivity", "Aplicacion conectada a la API");
 
         initView();
     }
-
-    /*
-    private void initView() {
-        username = findViewById(R.id.usertxt);
-        password = findViewById(R.id.passwordtxt);
-        inicioSesion = findViewById(R.id.btnInicio);
-
-        inicioSesion.setOnClickListener(v -> {
-            String usernameRellenado = username.getText().toString().trim();
-            String passwordRellenada = password.getText().toString().trim();
-
-            if (usernameRellenado.isEmpty() || passwordRellenada.isEmpty()) {
-                Toast.makeText(Login.this, "El email y la contraseña no pueden estar vacios",
-                        Toast.LENGTH_SHORT).show();
-            } else {
-                login(usernameRellenado, passwordRellenada);
-            }
-        });
-
-        registroUsuario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Login.this, RegistroUsuario.class);
-                startActivity(intent);
-            }
-        });
-    }
-    */
 
     private void initView() {
         email = findViewById(R.id.usertxt);
@@ -118,60 +71,21 @@ public class Login extends AppCompatActivity {
             Intent intent = new Intent(Login.this, RegistroUsuario.class);
             startActivity(intent);
         });
-    }
 
-
-    /*
-    private void login(String username, String password) {
-        TokenManager.getInstance(Login.this).clearToken();
-
-        LoginRequest loginRequest = new LoginRequest(username, password);
-        Call<AuthResponse> call = apiService.loginUser(loginRequest);
-
-        call.enqueue(new Callback<AuthResponse>() {
+        ImageButton closeButton = findViewById(R.id.closeButton);
+        closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    String token = response.body().getToken();
-                    Log.d(TAG, "Login successful. Token received: " + token);
-                    TokenManager.getInstance(Login.this).saveToken(token);
-
-                    // Log the saved token
-                    Log.d(TAG, "Saved token: " + TokenManager.getInstance(Login.this)
-                            .getToken());
-
-                    Intent intent = new Intent(Login.this, FrameLayaout.class);
-                    startActivity(intent);
-                    finish();
-            } else {
-                    Toast.makeText(Login.this, "Login failed: " + response.message(), Toast.LENGTH_SHORT).show();
-                    Log.d(TAG, "Response code: " + response.code());
-                    Log.d(TAG, "Response message: " + response.message());
-                    if (response.errorBody() != null) {
-                        try {
-                            Log.d(TAG, "Error body: " + response.errorBody().string());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<AuthResponse> call, Throwable t) {
-                Toast.makeText(Login.this, "An error occurred: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                t.printStackTrace();
+            public void onClick(View v) {
+                // Cerrar la aplicación
+                finishAffinity();
             }
         });
     }
 
-     */
+    private void login(String email, String password) {
+        tokenManager.clearToken(); // Limpiar el token antes de iniciar sesión
 
-    private void login(String username, String password) {
-        TokenManager tokenManager = TokenManager.getInstance(Login.this);
-        tokenManager.clearToken();
-
-        LoginRequest loginRequest = new LoginRequest(username, password);
+        LoginRequest loginRequest = new LoginRequest(email, password);
         Call<AuthResponse> call = apiService.loginUser(loginRequest);
 
         call.enqueue(new Callback<AuthResponse>() {
@@ -179,19 +93,23 @@ public class Login extends AppCompatActivity {
             public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     String token = response.body().getToken();
-                    Log.d(TAG, "Login successful. Token received: " + token);
-                    tokenManager.saveToken(token);
+                    Log.d("Login", "Login successful. Token received: " + token);
+                    tokenManager.saveToken(token); // Guardar el token utilizando TokenManager
+
+                    // Verificar el token guardado
+                    String savedToken = tokenManager.getToken();
+                    Log.d("Login", "Saved token: " + savedToken);
 
                     Intent intent = new Intent(Login.this, FrameLayaout.class);
                     startActivity(intent);
                     finish();
                 } else {
                     Toast.makeText(Login.this, "Login failed: " + response.message(), Toast.LENGTH_SHORT).show();
-                    Log.d(TAG, "Response code: " + response.code());
-                    Log.d(TAG, "Response message: " + response.message());
+                    Log.d("Login", "Response code: " + response.code());
+                    Log.d("Login", "Response message: " + response.message());
                     if (response.errorBody() != null) {
                         try {
-                            Log.d(TAG, "Error body: " + response.errorBody().string());
+                            Log.d("Login", "Error body: " + response.errorBody().string());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -202,9 +120,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void onFailure(Call<AuthResponse> call, Throwable t) {
                 Toast.makeText(Login.this, "An error occurred: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "An error occurred: ", t);
+                Log.e("Login", "An error occurred: ", t);
             }
         });
     }
-
 }

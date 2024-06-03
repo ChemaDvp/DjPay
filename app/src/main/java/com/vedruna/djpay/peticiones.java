@@ -1,64 +1,118 @@
 package com.vedruna.djpay;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link peticiones#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.vedruna.djpay.DTO.PeticionDTO;
+import com.vedruna.djpay.adapter.PeticionAdapter;
+import com.vedruna.djpay.interfaces.PeticionInterface;
+import com.vedruna.djpay.model.Peticion;
+import com.vedruna.djpay.utils.Constants;
+import com.vedruna.djpay.utils.TokenManager;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class peticiones extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public peticiones() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment peticiones.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static peticiones newInstance(String param1, String param2) {
-        peticiones fragment = new peticiones();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private ListView listView;
+    private List<Peticion> peticionList;
+    private PeticionAdapter peticionAdapter;
+    private PeticionInterface peticionInterface;
+    private TokenManager tokenManager;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_peticiones, container, false);
+        listView = rootView.findViewById(R.id.listaPeticiones);
+
+        peticionList = new ArrayList<>();
+        peticionAdapter = new PeticionAdapter(getActivity(), peticionList);
+        listView.setAdapter(peticionAdapter);
+
+        tokenManager = TokenManager.getInstance(getActivity());
+
+        mostrarPeticiones();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Acción al hacer clic en un elemento de la lista
+            }
+        });
+
+        return rootView;
+    }
+
+    private void mostrarPeticiones() {
+        String token = tokenManager.getToken();
+
+        if (token == null || token.isEmpty()) {
+            Log.e("Peticiones", "Token no encontrado");
+            Toast.makeText(getActivity(), "Token no encontrado. Por favor, inicia sesión.", Toast.LENGTH_SHORT).show();
+            return;
         }
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_peticiones, container, false);
+        Log.d("Peticiones", "Token encontrado: " + token);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Constants.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        peticionInterface = retrofit.create(PeticionInterface.class);
+        Call<List<Peticion>> call = peticionInterface.getPeticiones("Bearer " + token);
+
+        call.enqueue(new Callback<List<Peticion>>() {
+            @Override
+            public void onResponse(Call<List<Peticion>> call, Response<List<Peticion>> response) {
+                if (response.isSuccessful()) {
+                    List<Peticion> peticiones = response.body();
+                    if (peticiones != null) {
+                        peticionList.clear();
+                        peticionList.addAll(peticiones);
+                        peticionAdapter.notifyDataSetChanged();
+                        Log.d("Peticiones", "Lista de peticiones obtenida: " + peticionList.toString());
+                    } else {
+                        Log.e("Peticiones", "La respuesta del servidor es nula");
+                    }
+                } else {
+                    Log.e("Peticiones", "Error en la respuesta: " + response.errorBody());
+                    Log.e("Peticiones", "Código de estado: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Peticion>> call, Throwable t) {
+                Log.e("Peticiones", "Error en la solicitud: " + t.getMessage());
+                if (t instanceof IOException) {
+                    Log.e("Peticiones", "Error de red: " + t.getMessage());
+                } else {
+                    Log.e("Peticiones", "Error inesperado: " + t.getMessage());
+                }
+            }
+        });
     }
 }

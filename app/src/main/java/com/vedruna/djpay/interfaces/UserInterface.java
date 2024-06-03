@@ -13,6 +13,6 @@ public interface UserInterface {
      * Recupera todos los DJS.
      * @return Una llamada asíncrona que devuelve una lista de objetos Player.
      */
-    @GET("/users/dj")
+    @GET("api/v1/usuario/users/dj")
     Call<List<User>> getUsersWithDjRole();
 }

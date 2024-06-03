@@ -22,18 +22,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
 
-    <SearchView
+    <!--
+     <SearchView
         android:id="@+id/searchView"
         android:layout_width="313dp"
         android:layout_height="49dp"
         android:alpha="0.35"
         android:background="#FFFFFF"
         android:radius="12dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.195" />
+     -->
+
 
     <TextView
         android:id="@+id/textView8"
@@ -52,22 +56,23 @@
 
     <ListView
         android:id="@+id/listaDJS"
-        android:layout_width="319dp"
-        android:layout_height="279dp"
+        android:layout_width="330dp"
+        android:layout_height="400dp"
         android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.539" />
+        app:layout_constraintVertical_bias="0.437" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/enviarPeticion"
         android:layout_width="327dp"
         android:layout_height="51dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Nombre canción"
+        android:hint="Petición"
         android:inputType="textMultiLine"
         android:textAlignment="center"
         android:textColorHint="#7986CB"
@@ -76,7 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.83" />
+        app:layout_constraintVertical_bias="0.864" />
 
     <Button
         android:id="@+id/button3"

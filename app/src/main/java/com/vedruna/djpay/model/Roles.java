@@ -1,4 +1,8 @@
 package com.vedruna.djpay.model;
 
-public class Roles {
+import java.io.Serializable;
+
+public class Roles implements Serializable {
+    private int idRol;
+    private String nombre;
 }

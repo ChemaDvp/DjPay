@@ -6,13 +6,13 @@ import android.util.Log;
 
 public class TokenManager {
     private static TokenManager instance = null;
-    private SharedPreferences prefs;
+    private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private static final String TAG = "TokenManager";
 
     private TokenManager(Context context) {
-        prefs = context.getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE);
-        editor = prefs.edit();
+        sharedPreferences = context.getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
     }
 
     public static synchronized TokenManager getInstance(Context context) {
@@ -30,7 +30,7 @@ public class TokenManager {
     }
 
     public String getToken() {
-        return prefs.getString(Constants.PREFS_KEY_AUTH_TOKEN, null);
+        return sharedPreferences.getString(Constants.PREFS_KEY_AUTH_TOKEN, null);
     }
 
     public void clearToken() {
