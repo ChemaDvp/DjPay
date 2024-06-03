@@ -22,7 +22,6 @@
 - [Funcionalidades](https://github.com/ChemaDvp/DjPay/wiki/Funcionalidades)
 - [Guía Instalación](https://github.com/ChemaDvp/DjPay/wiki/Guía-Instalación)
 - [Guía Uso](https://github.com/ChemaDvp/DjPay/wiki/Guía-Uso)
-- [Figma](https://github.com/ChemaDvp/DjPay/wiki/Figma)
 - [Conclusión](https://github.com/ChemaDvp/DjPay/wiki/Conclusión)
 - [Agradecimientos](https://github.com/ChemaDvp/DjPay/wiki/Agradecimientos)
 - [Licencias](https://github.com/ChemaDvp/DjPay/wiki/Licencias)
