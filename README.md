@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  <h2 style="font-size: 20px;">Bienvenido al repositorio que almacena la Aplicación</h2>
+  <h2 style="font-size: 20px;">Bienvenido al repositorio que almacena la Aplicación Dj Pay</h2>
 </div>
 
 <div align="center">
