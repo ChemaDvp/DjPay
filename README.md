@@ -35,4 +35,5 @@
 
 #### Acerca del proyecto:
 - Aplicación Android creada en Android Studio y una API (Backend) en Java.
+- [Diseño Figma de Dj Pay](https://www.figma.com/design/tScTBDElVev6dvErprBfvN/PROTOTIPO-Y-DIAGRAMAS-TFG?node-id=0-1&t=4DhefQX8L6spX7pc-1)
 
