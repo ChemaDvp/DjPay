@@ -40,6 +40,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation("androidx.navigation:navigation-fragment:2.7.7")
     implementation("androidx.navigation:navigation-ui:2.7.7")
+    implementation ("com.auth0.android:jwtdecode:2.0.0")
+    implementation ("androidx.core:core-ktx:1.3.2")
 
     //RETROFIT
     implementation("com.squareup.retrofit2:retrofit:2.9.0")

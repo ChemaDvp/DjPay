@@ -93,8 +93,10 @@ public class Login extends AppCompatActivity {
             public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     String token = response.body().getToken();
+
                     Log.d("Login", "Login successful. Token received: " + token);
-                    tokenManager.saveToken(token); // Guardar el token utilizando TokenManager
+
+                    tokenManager.saveToken(token);
 
                     // Verificar el token guardado
                     String savedToken = tokenManager.getToken();
@@ -119,7 +121,8 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<AuthResponse> call, Throwable t) {
-                Toast.makeText(Login.this, "An error occurred: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, "An error occurred: " + t.getMessage(),
+                        Toast.LENGTH_SHORT).show();
                 Log.e("Login", "An error occurred: ", t);
             }
         });

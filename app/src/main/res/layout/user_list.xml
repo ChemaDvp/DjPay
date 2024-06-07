@@ -20,21 +20,23 @@
             android:layout_height="match_parent"
             android:background="#4165E4"
             android:orientation="horizontal"
-            android:padding="16dp">
+            android:padding="16dp"
+            android:gravity="center">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:background="#4165E4"
-                android:gravity="start|left"
+                android:background="@drawable/bordes_redondeados"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <TextView
@@ -42,7 +44,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/monda_bold"
-                        android:text="Dj: "
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 

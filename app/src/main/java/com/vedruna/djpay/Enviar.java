@@ -1,8 +1,5 @@
 package com.vedruna.djpay;
 
-import static android.content.Context.MODE_PRIVATE;
-
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -22,7 +18,6 @@ import com.vedruna.djpay.adapter.UserAdapter;
 import com.vedruna.djpay.interfaces.PeticionInterface;
 import com.vedruna.djpay.interfaces.UserInterface;
 import com.vedruna.djpay.model.User;
-import com.vedruna.djpay.network.ApiService;
 import com.vedruna.djpay.utils.Constants;
 import com.vedruna.djpay.utils.TokenManager;
 
@@ -72,7 +67,8 @@ public class Enviar extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 User selectedUser = djList.get(position);
                 userAdapter.setSelectedUser(selectedUser); // Marcar el usuario seleccionado en el adaptador
-                // Aquí puedes realizar otras acciones relacionadas con el usuario seleccionado si lo deseas
+                Log.d("Enviar", "Usuario seleccionado: " + selectedUser.getUsername() + " con ID: " + selectedUser.getId());
+
             }
         });
 
@@ -135,6 +131,9 @@ public class Enviar extends Fragment {
                 if (response.isSuccessful()) {
                     List<User> users = response.body();
                     if (users != null) {
+                        for (User user : users) {
+                            Log.d("Enviar", "Usuario: " + user.getUsername() + ", ID: " + user.getId());
+                        }
                         djList.clear();
                         djList.addAll(users);
                         userAdapter.notifyDataSetChanged();
@@ -164,12 +163,40 @@ public class Enviar extends Fragment {
     private void enviarMensajeAlUsuarioSeleccionado(String mensaje) {
         User selectedUser = userAdapter.getSelectedUser();
         if (selectedUser != null) {
-            int usuarioId = selectedUser.getId(); // Obtener el ID del usuario seleccionado
+            long usuarioId = selectedUser.getId(); // Obtener el ID del usuario seleccionado
+            Log.d("Enviar", "Enviando mensaje al usuario con ID: " + usuarioId);
 
-            // Inicializar Retrofit y ApiService dentro del método
+            String token = tokenManager.getToken();
+
+            if (token == null || token.isEmpty()) {
+                Log.e("Enviar", "Token no encontrado");
+                Toast.makeText(getActivity(), "Token no encontrado. Por favor, inicia sesión.",
+                        Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            Log.d("Enviar", "Token encontrado: " + token);
+            Toast.makeText(getActivity(), "Petición enviada",
+                    Toast.LENGTH_SHORT).show();
+
+            Interceptor interceptor = new Interceptor() {
+                @Override
+                public okhttp3.Response intercept(Chain chain) throws IOException {
+                    Request request = chain.request().newBuilder()
+                            .addHeader("Authorization", "Bearer " + token)
+                            .build();
+                    return chain.proceed(request);
+                }
+            };
+
+            OkHttpClient client2 = new OkHttpClient.Builder()
+                    .addInterceptor(interceptor)
+                    .build();
+
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(Constants.BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
+                    .client(client2)
                     .build();
 
             peticionInterface = retrofit.create(PeticionInterface.class);
@@ -196,14 +223,7 @@ public class Enviar extends Fragment {
                 public void onFailure(Call<String> call, Throwable t) {
                     // Log para verificar el error en la solicitud
                     Log.e("Enviar", "Error en la solicitud: " + t.getMessage());
-                    if (t instanceof IOException) {
-                        Log.e("Enviar", "Error de red: " + t.getMessage());
-                    } else {
-                        Log.e("Enviar", "Error inesperado: " + t.getMessage());
-                    }
-                    // Mostrar un mensaje de error si hubo un problema de red
-                    Toast.makeText(getActivity(), "Error de red al enviar la petición",
-                            Toast.LENGTH_SHORT).show();
+
                 }
             });
         } else {

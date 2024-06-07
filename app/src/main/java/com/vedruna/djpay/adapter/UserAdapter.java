@@ -2,6 +2,7 @@ package com.vedruna.djpay.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,6 +78,7 @@ public class UserAdapter extends BaseAdapter {
 
     public void setSelectedUser(User user) {
         selectedUser = user;
+        Log.d("UserAdapter", "Usuario seleccionado: " + user.getUsername() + ", ID: " + user.getId());
         notifyDataSetChanged();
     }
 

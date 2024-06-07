@@ -19,9 +19,9 @@ public class PeticionAdapter extends BaseAdapter {
     private Context context;
     private Peticion selectedPeticion;
 
-    public PeticionAdapter(Context context, List<Peticion> peticionList) {
-        this.context = context;
+    public PeticionAdapter(List<Peticion> peticionList ,Context context) {
         this.peticionList = peticionList;
+        this.context = context;
     }
 
     @Override
@@ -55,7 +55,16 @@ public class PeticionAdapter extends BaseAdapter {
 
         Peticion peticion = (Peticion) getItem(position);
 
-        viewHolder.peticionText.setText(peticion.getString());
+        viewHolder.peticionText.setText(peticion.getContenido());
+
+        // Cambiar el color y el tamaño del texto según si la petición está seleccionada
+        if (peticion.equals(selectedPeticion)) {
+            viewHolder.peticionText.setTextColor(Color.WHITE); // Color blanco
+            viewHolder.peticionText.setTextSize(20); // Tamaño más grande
+        } else {
+            viewHolder.peticionText.setTextColor(Color.BLACK); // Color por defecto
+            viewHolder.peticionText.setTextSize(14); // Tamaño por defecto
+        }
 
         return convertView;
     }
@@ -71,5 +80,13 @@ public class PeticionAdapter extends BaseAdapter {
 
     public Peticion getSelectedPeticion() {
         return selectedPeticion;
+    }
+
+    public void removeSelectedPeticion() {
+        if (selectedPeticion != null) {
+            peticionList.remove(selectedPeticion);
+            selectedPeticion = null;
+            notifyDataSetChanged();
+        }
     }
 }

@@ -19,7 +19,6 @@ public class RegisterRequest implements Serializable{
     }
 
     // Getters and setters
-
     public String getUsername() {
         return username;
     }

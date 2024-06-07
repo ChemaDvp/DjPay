@@ -41,7 +41,7 @@
         android:layout_width="337dp"
         android:layout_height="115dp"
         android:fontFamily="@font/monda"
-        android:text="Dj Pay es la app definitiva para poder hacerle peticiones a dj’s. Podréis hacerle peticiones a cualquier Dj que esté registrado en nuestra app."
+        android:text="Dj Pay te permite buscar a un dj registrado en nuestra app y poder realizarle una petición en el momento."
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -49,23 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.352" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="343dp"
-        android:layout_height="130dp"
-        android:fontFamily="@font/monda"
-        android:text="Podréis recibir peticiones de cualquier usuario registrado en la app. En actualizaciones futuras, se podrán monetizar las peticiones."
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.605" />
+        app:layout_constraintVertical_bias="0.435" />
 
     <TextView
         android:id="@+id/textView14"
@@ -80,7 +64,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.763" />
+        app:layout_constraintVertical_bias="0.595" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -94,11 +78,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.917">
 
-    <ImageView
-        android:id="@+id/logoGithub"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/github" />
     </LinearLayout>
 
     <TextView
@@ -114,5 +93,17 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.837" />
+        app:layout_constraintVertical_bias="0.69" />
+
+    <ImageView
+        android:id="@+id/logoGithub"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/github"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
 </androidx.constraintlayout.widget.ConstraintLayout>

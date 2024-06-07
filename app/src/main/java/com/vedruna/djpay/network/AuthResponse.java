@@ -5,7 +5,8 @@ import java.io.Serializable;
 public class AuthResponse implements Serializable {
     private String token;
 
-    public AuthResponse() {}
+    public AuthResponse() {
+    }
 
     public AuthResponse(String token) {
         this.token = token;

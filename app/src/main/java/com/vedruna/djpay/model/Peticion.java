@@ -9,7 +9,17 @@ public class Peticion implements Serializable {
     private String contenido;
     private Boolean estado;
 
-    public String getString() {
+    public Peticion(int idPeticion, User author, String contenido, Boolean estado) {
+        this.idPeticion = idPeticion;
+        this.author = author;
+        this.contenido = contenido;
+        this.estado = estado;
+    }
+
+    public String getContenido() {
         return contenido;
+    }
+    public int getId() {
+        return idPeticion;
     }
 }

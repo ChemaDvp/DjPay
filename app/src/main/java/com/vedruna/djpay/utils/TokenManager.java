@@ -10,6 +10,8 @@ public class TokenManager {
     private SharedPreferences.Editor editor;
     private static final String TAG = "TokenManager";
 
+    private static final String USER_ID_KEY = "user_id";
+
     private TokenManager(Context context) {
         sharedPreferences = context.getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -41,4 +43,5 @@ public class TokenManager {
     public void setTestToken(String token) {
         saveToken(token);
     }
+
 }
