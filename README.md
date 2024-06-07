@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  <h2 style="font-size: 20px;">Bienvenido al repositorio que almacena la Aplicación</h2>
+  <h2 style="font-size: 20px;">Bienvenido al repositorio que almacena la Aplicación Dj Pay</h2>
 </div>
 
 <div align="center">
@@ -22,7 +22,6 @@
 - [Funcionalidades](https://github.com/ChemaDvp/DjPay/wiki/Funcionalidades)
 - [Guía Instalación](https://github.com/ChemaDvp/DjPay/wiki/Guía-Instalación)
 - [Guía Uso](https://github.com/ChemaDvp/DjPay/wiki/Guía-Uso)
-- [Figma](https://github.com/ChemaDvp/DjPay/wiki/Figma)
 - [Conclusión](https://github.com/ChemaDvp/DjPay/wiki/Conclusión)
 - [Agradecimientos](https://github.com/ChemaDvp/DjPay/wiki/Agradecimientos)
 - [Licencias](https://github.com/ChemaDvp/DjPay/wiki/Licencias)
@@ -36,4 +35,5 @@
 
 #### Acerca del proyecto:
 - Aplicación Android creada en Android Studio y una API (Backend) en Java.
+- [Diseño Figma de Dj Pay](https://www.figma.com/design/tScTBDElVev6dvErprBfvN/PROTOTIPO-Y-DIAGRAMAS-TFG?node-id=0-1&t=4DhefQX8L6spX7pc-1)
 
